@@ -1,3 +1,4 @@
+<meta http-equiv="refresh" content="5" >
 <html>
   <head>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -15,9 +16,7 @@
 		//var d = new Date();
 		dataamp.addRow([(new Date(<?php echo $chartitem['timestamp']; ?>)),<?php echo $chartitem['va']; ?>,<?php echo $chartitem['vb']; ?>,<?php echo $chartitem['vc']; ?>]);
 		<?php endforeach; ?>
-		var optionsamp = {	'title':'Amplitude',
-						'width':900,
-						'height':250};
+		var optionsamp = {	'title':'Amplitude'};
         var chart = new google.visualization.LineChart(document.getElementById('chart_amp'));
         chart.draw(dataamp,optionsamp); //amplitude
 		
@@ -37,7 +36,7 @@
     </script>
   </head>
   <body>
-    <div id="chart_amp" style="width: 900px; height: 250px;"></div>
-	<div id="chart_ang" style="width: 900px; height: 250px;"></div>
+    <div id="chart_amp" style="width: 1100px; height: 250px;"></div>
+	<div id="chart_ang" style="width: 1100px; height: 250px;"></div>
   </body>
 </html>

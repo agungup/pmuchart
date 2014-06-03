@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class GetPhasor extends CI_Controller
+class Phasor extends CI_Controller
 {
 	function __construct()
 	{
@@ -12,10 +12,12 @@ class GetPhasor extends CI_Controller
 	
 	function index()
 	{
-		$this->load->view('phasor_graph');
+		$query = $this->db->query("SELECT PDC_ID,PMU_ID,STN FROM SUB_CFG_TABLE");
+		$data['output'] = $query->result_array();
+		$this->load->view('phasor_index',$data);
 	}
 	
-	function amplitude($pdcid,$pmuid,$limit=300)
+	function chart($pdcid,$pmuid,$limit=300)
 	{
 		//echo 'ok';
 		$query = $this->db->query("SELECT SOC,FRACSEC,PHASOR_AMPLITUDE,PHASOR_ANGLE FROM PHASOR_MEASUREMENTS WHERE PDC_ID=".$pdcid." AND PMU_ID=".$pmuid." AND PHASOR_NAME='Va' ORDER BY SOC desc, FRACSEC desc LIMIT ".$limit);
@@ -48,11 +50,5 @@ class GetPhasor extends CI_Controller
 		//print_r($data);
 		//echo json_encode($query->result_array());
 		$this->load->view('phasor_graph',$data);
-	}
-	
-	function angle($pdcid,$pmuid,$phasor_name,$limit=300)
-	{
-		$query = $this->db->query("SELECT SOC,PHASOR_ANGLE FROM PHASOR_MEASUREMENTS WHERE PDC_ID=".$pdcid." AND PMU_ID=".$pmuid." AND PHASOR_NAME='".$phasor_name."' ORDER BY SOC desc, FRACSEC desc LIMIT ".$limit);
-		echo json_encode($query->result_array());
 	}
 }
