@@ -36,7 +36,7 @@
     </script>
   </head>
   <body>
-    <div id="chart_amp" style="width: 1100px; height: 250px;"></div>
-	<div id="chart_ang" style="width: 1100px; height: 250px;"></div>
+    <div id="chart_amp" style="width: 600px; height: 250px;"></div>
+	<div id="chart_ang" style="width: 600px; height: 250px;"></div>
   </body>
 </html>
